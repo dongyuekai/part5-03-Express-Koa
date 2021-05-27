@@ -8,17 +8,18 @@ const { getDb, saveDb } = require('./db.js')
 const router = express.Router()
 
 // 限定请求方法和路由的中间件
-router.get('/', async (req, res) => {
+router.get('/', async (req, res, next) => {
   try {
     const db = await getDb()
     res.status(200).json(db.todos)
   } catch (error) {
-    res.status(500).json({
-      error: error.message
-    })
+    // res.status(500).json({
+    //   error: error.message
+    // })
+    next(error)
   }
 })
-router.get('/:id', async (req, res) => {
+router.get('/:id', async (req, res, next) => {
   // res.abc()
   try {
     const db = await getDb()
@@ -28,14 +29,16 @@ router.get('/:id', async (req, res) => {
     }
     res.status(200).json(todo)
   } catch (error) {
-    res.status(500).json({
-      error: error.message
-    })
+    // res.status(500).json({
+    //   error: error.message
+    // })
+    console.log('dyk--')
+    next(error)
   }
 })
 
 // 添加
-router.post('/', async (req, res) => {
+router.post('/', async (req, res, next) => {
   try {
     // console.log('req.body---', req.body)
 
@@ -60,14 +63,15 @@ router.post('/', async (req, res) => {
     // 4 发送响应 结束本次请求
     res.status(200).json(todo)
   } catch (error) {
-    res.status(500).json({
-      error: error.message
-    })
+    // res.status(500).json({
+    //   error: error.message
+    // })
+    next(error)
   }
 })
 
 // 修改
-router.patch('/:id', async (req, res) => {
+router.patch('/:id', async (req, res, next) => {
   try {
     // 1 获取表单数据
     const todo = req.body
@@ -83,14 +87,15 @@ router.patch('/:id', async (req, res) => {
     await saveDb(db)
     res.status(200).json(ret)
   } catch (error) {
-    res.status(500).json({
-      error: error.message
-    })
+    // res.status(500).json({
+    //   error: error.message
+    // })
+    next(error)
   }
 })
 
 // 删除
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', async (req, res, next) => {
   try {
     // 1 获取表单数据
     const todo = req.body
@@ -108,9 +113,10 @@ router.delete('/:id', async (req, res) => {
     })
 
   } catch (error) {
-    res.status(500).json({
-      error: error.message
-    })
+    // res.status(500).json({
+    //   error: error.message
+    // })
+    next(error)
   }
 })
 

@@ -12,15 +12,15 @@ app.use(express.urlencoded()) // 解析application/x-www-form-urlencoded  格式
 
 // 所有的请求都会首先执行此中间件
 // 不做任何限定的中间件
-app.use((req, res, next) => {
-  // res.abc = () => {
-  //   console.log('abc')
-  // }
-  console.log(req.method, req.url, Date.now())
-  console.log('hello 我是中间件---')
-  // 放行 调用下一个匹配的中间件
-  next()
-})
+// app.use((req, res, next) => {
+//   // res.abc = () => {
+//   //   console.log('abc')
+//   // }
+//   console.log(req.method, req.url, Date.now())
+//   console.log('hello 我是中间件---')
+//   // 放行 调用下一个匹配的中间件
+//   next()
+// })
 
 // 限定特定路由的中间件
 // app.use('/todos/:id', (req, res, next) => {
@@ -143,6 +143,11 @@ app.use((req, res, next) => {
 
 // 挂载路由 添加前缀
 app.use('/todos', router)
+
+// 错误处理中间件
+app.use((err, req, res, next) => {
+  console.log('出错了---', err)
+})
 
 app.listen(1234, () => {
   console.log('server is running at http://localhost:1234...')
