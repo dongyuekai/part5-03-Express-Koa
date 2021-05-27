@@ -9,6 +9,10 @@ exports.register = async (req, res, next) => {
     await user.save()
     user = user.toJSON()
 
+    res.status(201).json({
+      user
+    })
+
   } catch (err) {
     next(err)
   }
