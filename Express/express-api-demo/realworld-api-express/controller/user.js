@@ -9,6 +9,9 @@ exports.register = async (req, res, next) => {
     await user.save()
     user = user.toJSON()
 
+    // 这里是返回到时候不返回密码这个字段
+    delete user.password
+
     res.status(201).json({
       user
     })
