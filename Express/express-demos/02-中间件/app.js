@@ -6,9 +6,13 @@ const router = require('./router')
 
 const app = express()
 
-// 中间件 配置解析表单body
-app.use(express.json()) // 解析 application/json 格式数据
-app.use(express.urlencoded()) // 解析application/x-www-form-urlencoded  格式数据
+// express 内置中间件 
+app.use(express.json()) // 解析 req.body  application/json 格式数据
+app.use(express.urlencoded()) // 解析 req.body application/x-www-form-urlencoded  格式数据
+// app.use(express.raw()) // 解析 req.body application/octet-stream 格式的请求体
+// app.use(express.text()) // 解析 req.body text/plain 格式的请求体
+// app.use(express.static()) //托管静态资源
+
 
 // 所有的请求都会首先执行此中间件
 // 不做任何限定的中间件
@@ -144,7 +148,12 @@ app.use(express.urlencoded()) // 解析application/x-www-form-urlencoded  格式
 // 挂载路由 添加前缀
 app.use('/todos', router)
 
-// 错误处理中间件
+// 通常会在所有的路由之后配置处理 路由 404 的内容
+app.use((req, res, next) => {
+  res.status(404).send('404 Not Found')
+})
+
+// 错误处理中间件 匹配错误 不是  404
 app.use((err, req, res, next) => {
   console.log('出错了---', err)
 })
