@@ -46,6 +46,9 @@ exports.login = [
   ]),
   validate([
     body('user.password').custom(async (password, { req }) => {
+      // 比较的时候要比较md5加密后的
+      // console.log(md5(password))
+      // console.log(req.user.password)
       if (md5(password) !== req.user.password) {
         return Promise.reject('密码错误')
       }
