@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/dongyuekai/part5-03-Express-Koa#readme",
   "dependencies": {
+    "art-template": "^4.13.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-art-template": "^1.0.1",
     "express-validator": "^6.11.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.11",

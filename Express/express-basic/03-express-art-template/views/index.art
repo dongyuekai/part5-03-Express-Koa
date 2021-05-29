@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title></title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <h1>Hello dyk!!!!!1</h1>
+  <h2>{{foo}}</h2>
+  <ul>
+    {{ each todos }}
+    <!-- $value 就是遍历项 -->
+    <li>{{ $value.title }}</li>
+    {{ /each }}
+  </ul>
+</body>
+
+</html>
