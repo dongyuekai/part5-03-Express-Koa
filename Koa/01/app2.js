@@ -22,6 +22,9 @@ router.post('/', ctx => {
 router.get('/foo', ctx => {
   ctx.body = 'foo page'
 })
+router.get('/bar', ctx => {
+  ctx.redirect('/foo')
+})
 app.use(router.routes()).use(router.allowedMethods())
 
 app.listen(3000, () => {
