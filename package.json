@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/dongyuekai/part5-03-Express-Koa#readme",
   "dependencies": {
+    "@koa/router": "^10.0.0",
     "art-template": "^4.13.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
