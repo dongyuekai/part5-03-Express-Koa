@@ -16,6 +16,11 @@ app.set('views', path.join(__dirname, 'views'))
 // app.set('view engine', 'html')
 app.set('view engine', 'art')
 
+// 静态资源托管 不带前缀
+// app.use(express.static(path.join(__dirname, './public')))
+// 静态资源托管 带前缀
+app.use('/foo', express.static(path.join(__dirname, './public')))
+
 
 const todos = [
   { id: 1, title: '吃饭1' },
