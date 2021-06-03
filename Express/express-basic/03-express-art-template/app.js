@@ -24,6 +24,15 @@ const todos = [
   { id: 4, title: '吃饭4' }
 ]
 
+// 静态资源托管
+// 访问的时候不需要加public前缀
+// app.use(express.static('./public'))
+// app.use('/public', express.static('./public'))
+
+// 路径设置成动态的  在哪里都可以找到
+app.use('/public', express.static(path.join(__dirname, './public')))
+
+
 app.get('/', (req, res) => {
   // 渲染模板引擎
   res.render('index', {
