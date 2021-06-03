@@ -18,12 +18,17 @@
   },
   "homepage": "https://github.com/dongyuekai/part5-03-Express-Koa#readme",
   "dependencies": {
+    "@koa/router": "^10.0.0",
     "art-template": "^4.13.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-art-template": "^1.0.1",
     "express-validator": "^6.11.1",
     "jsonwebtoken": "^8.5.1",
+    "koa": "^2.13.1",
+    "koa-compose": "^4.1.0",
+    "koa-mount": "^4.0.0",
+    "koa-static": "^5.0.0",
     "mongoose": "^5.12.11",
     "morgan": "^1.10.0"
   }
